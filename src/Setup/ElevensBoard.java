@@ -1,5 +1,9 @@
 package Setup;
 import java.util.List;
+import Setup.Card;
+import Setup.Deck;
+import Setup.Board;
+import Setup.CardGameGUI;
 import java.util.ArrayList;
 
 /**
@@ -28,7 +32,7 @@ public class ElevensBoard extends Board {
      * The values of the cards for this game to be sent to the deck.
      */
     private static final int[] POINT_VALUES =
-            {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 0, 0};
+            {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 
     /**
      * Flag used to control debugging print statements.
@@ -55,7 +59,17 @@ public class ElevensBoard extends Board {
     @Override
     public boolean isLegal(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-    }
+        int sum = 0;
+
+            for (int i = 0; i < selectedCards.size(); i++) {
+                sum += selectedCards.get(i);
+                if (sum == 11) {
+                    return true;
+                }
+            }
+            if(selectedCards.get(0).pointValue
+        }
+
 
     /**
      * Determine if there are any legal plays left on the board.
