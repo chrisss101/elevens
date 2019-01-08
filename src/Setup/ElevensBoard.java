@@ -6,6 +6,7 @@ import Setup.Board;
 import Setup.CardGameGUI;
 import java.util.ArrayList;
 
+
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
  */
@@ -67,7 +68,13 @@ public class ElevensBoard extends Board {
                     return true;
                 }
             }
-            if(selectedCards.get(0).pointValue
+            if (selectedCards.size() == 3) {
+                if(cardAt(selectedCards.get(0) == 11 ) && (selectedCards.get(1) == 12) && (selectedCards.get(2) == 13))
+                {
+
+                }
+            }
+
         }
 
 
@@ -82,6 +89,7 @@ public class ElevensBoard extends Board {
     @Override
     public boolean anotherPlayIsPossible() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        for (int i = 0; i <  )
     }
 
     /**
