@@ -69,10 +69,23 @@ public class ElevensBoard extends Board {
                 }
             }
             if (selectedCards.size() == 3) {
-                if(cardAt(selectedCards.get(0) == 11 ) && (selectedCards.get(1) == 12) && (selectedCards.get(2) == 13))
-                {
 
+                if((cardAt(selectedCards.get(0)).pointValue() == 11 ) && (cardAt(selectedCards.get(1)).pointValue() == 12) && (cardAt(selectedCards.get(2)).pointValue() == 13)) {
+                    return true;
                 }
+                else if((cardAt(selectedCards.get(1)).pointValue() == 11 ) && (cardAt(selectedCards.get(0)).pointValue() == 12) && (cardAt(selectedCards.get(2)).pointValue() == 13)) {
+                    return true;
+                }
+                else if((cardAt(selectedCards.get(0)).pointValue() == 11 ) && (cardAt(selectedCards.get(2)).pointValue() == 12) && (cardAt(selectedCards.get(1)).pointValue() == 13)) {
+                    return true;
+                }
+                else if((cardAt(selectedCards.get(2)).pointValue() == 11 ) && (cardAt(selectedCards.get(0)).pointValue() == 12) && (cardAt(selectedCards.get(1)).pointValue() == 13)) {
+                    return true;
+                }
+            }
+
+            else {
+                return false;
             }
 
         }
