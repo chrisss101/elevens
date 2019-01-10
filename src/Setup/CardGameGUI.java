@@ -36,10 +36,10 @@ public class CardGameGUI extends JFrame implements ActionListener {
     /** Column (x coord) of the upper left corner of the first card. */
     private static final int LAYOUT_LEFT = 30;
     /** Distance between the upper left x coords of
-     *  two horizonally adjacent cards. */
+     *  two horizonally adjacent Setup.cards. */
     private static final int LAYOUT_WIDTH_INC = 100;
     /** Distance between the upper left y coords of
-     *  two vertically adjacent cards. */
+     *  two vertically adjacent Setup.cards. */
     private static final int LAYOUT_HEIGHT_INC = 125;
     /** y coord of the "Replace" button. */
     private static final int BUTTON_TOP = 30;
@@ -47,11 +47,11 @@ public class CardGameGUI extends JFrame implements ActionListener {
     private static final int BUTTON_LEFT = 570;
     /** Distance between the tops of the "Replace" and "Restart" buttons. */
     private static final int BUTTON_HEIGHT_INC = 50;
-    /** y coord of the "n undealt cards remain" label. */
+    /** y coord of the "n undealt Setup.cards remain" label. */
     private static final int LABEL_TOP = 160;
-    /** x coord of the "n undealt cards remain" label. */
+    /** x coord of the "n undealt Setup.cards remain" label. */
     private static final int LABEL_LEFT = 540;
-    /** Distance between the tops of the "n undealt cards" and
+    /** Distance between the tops of the "n undealt Setup.cards" and
      *  the "You lose/win" labels. */
     private static final int LABEL_HEIGHT_INC = 35;
 
@@ -64,7 +64,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
     private JButton replaceButton;
     /** The Restart button. */
     private JButton restartButton;
-    /** The "number of undealt cards remain" message. */
+    /** The "number of undealt Setup.cards remain" message. */
     private JLabel statusMsg;
     /** The "you've won n out of m games" message. */
     private JLabel totalsMsg;
@@ -94,7 +94,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
         totalWins = 0;
         totalGames = 0;
 
-        // Initialize cardCoords using 5 cards per row
+        // Initialize cardCoords using 5 Setup.cards per row
         cardCoords = new Point[board.size()];
         int x = LAYOUT_LEFT;
         int y = LAYOUT_TOP;
@@ -126,7 +126,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
     }
 
     /**
-     * Draw the display (cards and messages).
+     * Draw the display (Setup.cards and messages).
      */
     public void repaint() {
         for (int k = 0; k < board.size(); k++) {
@@ -137,13 +137,11 @@ public class CardGameGUI extends JFrame implements ActionListener {
                 ImageIcon icon = new ImageIcon(imageURL);
                 displayCards[k].setIcon(icon);
                 displayCards[k].setVisible(true);
-            } else {
-                throw new RuntimeException(
-                        "Card image not found: \"" + cardImageFileName + "\"");
-            }
+            } else throw new RuntimeException(
+                    "Card image not found: \"" + cardImageFileName + "\"");
         }
         statusMsg.setText(board.deckSize()
-                + " undealt cards remain.");
+                + " undealt Setup.cards remain.");
         statusMsg.setVisible(true);
         totalsMsg.setText("You've won " + totalWins
                 + " out of " + totalGames + " games.");
@@ -173,7 +171,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
             setTitle(className.substring(0, titleLength));
         }
 
-        // Calculate number of rows of cards (5 cards per row)
+        // Calculate number of rows of Setup.cards (5 Setup.cards per row)
         // and adjust JFrame height if necessary
         int numCardRows = (board.size() + 4) / 5;
         int height = DEFAULT_HEIGHT;
@@ -208,7 +206,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
         restartButton.addActionListener(this);
 
         statusMsg = new JLabel(
-                board.deckSize() + " undealt cards remain.");
+                board.deckSize() + " undealt Setup.cards remain.");
         panel.add(statusMsg);
         statusMsg.setBounds(LABEL_LEFT, LABEL_TOP, 250, 30);
 
@@ -282,14 +280,14 @@ public class CardGameGUI extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(replaceButton)) {
-            // Gather all the selected cards.
+            // Gather all the selected Setup.cards.
             List<Integer> selection = new ArrayList<Integer>();
             for (int k = 0; k < board.size(); k++) {
                 if (selections[k]) {
                     selection.add(new Integer(k));
                 }
             }
-            // Make sure that the selected cards represent a legal replacement.
+            // Make sure that the selected Setup.cards represent a legal replacement.
             if (!board.isLegal(selection)) {
                 signalError();
                 return;

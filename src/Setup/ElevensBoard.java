@@ -13,24 +13,24 @@ import java.util.ArrayList;
 public class ElevensBoard extends Board {
 
     /**
-     * The size (number of cards) on the board.
+     * The size (number of Setup.cards) on the board.
      */
     private static final int BOARD_SIZE = 9;
 
     /**
-     * The ranks of the cards for this game to be sent to the deck.
+     * The ranks of the Setup.cards for this game to be sent to the deck.
      */
     private static final String[] RANKS =
             {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
 
     /**
-     * The suits of the cards for this game to be sent to the deck.
+     * The suits of the Setup.cards for this game to be sent to the deck.
      */
     private static final String[] SUITS =
             {"spades", "hearts", "diamonds", "clubs"};
 
     /**
-     * The values of the cards for this game to be sent to the deck.
+     * The values of the Setup.cards for this game to be sent to the deck.
      */
     private static final int[] POINT_VALUES =
             {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
@@ -49,26 +49,25 @@ public class ElevensBoard extends Board {
     }
 
     /**
-     * Determines if the selected cards form a valid group for removal.
-     * In Elevens, the legal groups are (1) a pair of non-face cards
-     * whose values add to 11, and (2) a group of three cards consisting of
+     * Determines if the selected Setup.cards form a valid group for removal.
+     * In Elevens, the legal groups are (1) a pair of non-face Setup.cards
+     * whose values add to 11, and (2) a group of three Setup.cards consisting of
      * a jack, a queen, and a king in some order.
-     * @param selectedCards the list of the indices of the selected cards.
-     * @return true if the selected cards form a valid group for removal;
+     * @param selectedCards the list of the indices of the selected Setup.cards.
+     * @return true if the selected Setup.cards form a valid group for removal;
      *         false otherwise.
      */
     @Override
     public boolean isLegal(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
         int sum = 0;
-
-            for (int i = 0; i < selectedCards.size(); i++) {
-                sum += selectedCards.get(i);
-                if (sum == 11) {
+            if (selectedCards.size() == 2) {
+                if (cardAt(selectedCards.get(0)).pointValue() + cardAt(selectedCards.get(0)).pointValue() == 11) {
                     return true;
                 }
             }
-            if (selectedCards.size() == 3) {
+
+            else if (selectedCards.size() == 3) {
 
                 if((cardAt(selectedCards.get(0)).pointValue() == 11 ) && (cardAt(selectedCards.get(1)).pointValue() == 12) && (cardAt(selectedCards.get(2)).pointValue() == 13)) {
                     return true;
@@ -95,21 +94,44 @@ public class ElevensBoard extends Board {
     /**
      * Determine if there are any legal plays left on the board.
      * In Elevens, there is a legal play if the board contains
-     * (1) a pair of non-face cards whose values add to 11, or (2) a group
-     * of three cards consisting of a jack, a queen, and a king in some order.
+     * (1) a pair of non-face Setup.cards whose values add to 11, or (2) a group
+     * of three Setup.cards consisting of a jack, a queen, and a king in some order.
      * @return true if there is a legal play left on the board;
      *         false otherwise.
      */
     @Override
     public boolean anotherPlayIsPossible() {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-          ArrayList List<>  = new list<Integer>
-        for (int i = 0; i < Board )
-            if (containsPairSum11())
+        List selectedCards = new ArrayList<>();
+        for (int i = 0; i < cards.length; i++) {
+            for(int j = i; j < cards.length; j++) {
+                for (int k = j; k < cards.length; k++) {
+                    selectedCards.add(cards[i]);
+                    selectedCards.add(cards[j]);
+                    selectedCards.add(cards[k]);
+                    if (isLegal(selectedCards)) {
+                        return true;
+                    }
+
+                }
+            }
+        }
+        for(int j = 0; j < cards.length; j++) {
+            for (int k = j; k < cards.length; k++) {
+                selectedCards.add(cards[j]);
+                selectedCards.add(cards[k]);
+                if (isLegal(selectedCards)) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+
     }
 
     /**
-     * Check for an 11-pair in the selected cards.
+     * Check for an 11-pair in the selected Setup.cards.
      * @param selectedCards selects a subset of this board.  It is list
      *                      of indexes into this board that are searched
      *                      to find an 11-pair.
@@ -120,7 +142,7 @@ public class ElevensBoard extends Board {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
         boolean n = false;
         for (int i = 0; i < selectedCards.size(); i++) {
-            for(int j = 0; j < selectedCards.size(); j++) {
+            for(int j = i; j < selectedCards.size(); j++) {
                 if (((cardAt(selectedCards.get(i)).pointValue()) + (cardAt(selectedCards.get(j)).pointValue())) == 11) {
                     n = true;
                 }
@@ -135,7 +157,7 @@ public class ElevensBoard extends Board {
     }
 
     /**
-     * Check for a JQK in the selected cards.
+     * Check for a JQK in the selected Setup.cards.
      * @param selectedCards selects a subset of this board.  It is list
      *                      of indexes into this board that are searched
      *                      to find a JQK group.
@@ -146,9 +168,9 @@ public class ElevensBoard extends Board {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
         boolean n = false;
         for (int i = 0; i < selectedCards.size(); i++) {
-            for(int j = 0; j < selectedCards.size(); j++) {
-                for (int k = 0; k < selectedCards.size(); k++) {
-                    if (((cardAt(selectedCards.get(i)).pointValue()) + (cardAt(selectedCards.get(j)).pointValue())  + (cardAt(selectedCards.get(k)).pointValue())) == 35) {
+            for(int j = i; j < selectedCards.size(); j++) {
+                for (int k = j; k < selectedCards.size(); k++) {
+                    if (((cardAt(selectedCards.get(i)).pointValue()) + (cardAt(selectedCards.get(j)).pointValue())  + (cardAt(selectedCards.get(k)).pointValue())) == 36) {
                         n = true;
                     }
                 }

@@ -3,19 +3,19 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * The Deck class represents a shuffled deck of cards.
+ * The Deck class represents a shuffled deck of Setup.cards.
  * It provides several operations including
  *      initialize, shuffle, deal, and check if empty.
  */
 public class Deck {
 
     /**
-     * cards contains all the cards in the deck.
+     * Setup.cards contains all the Setup.cards in the deck.
      */
     private List<Card> cards;
 
     /**
-     * size is the number of not-yet-dealt cards.
+     * size is the number of not-yet-dealt Setup.cards.
      * Cards are dealt from the top (highest index) down.
      * The next card to be dealt is at size - 1.
      */
@@ -43,7 +43,7 @@ public class Deck {
 
 
     /**
-     * Determines if this deck is empty (no undealt cards).
+     * Determines if this deck is empty (no undealt Setup.cards).
      * @return true if this deck is empty, false otherwise.
      */
     public boolean isEmpty() {
@@ -51,15 +51,15 @@ public class Deck {
     }
 
     /**
-     * Accesses the number of undealt cards in this deck.
-     * @return the number of undealt cards in this deck.
+     * Accesses the number of undealt Setup.cards in this deck.
+     * @return the number of undealt Setup.cards in this deck.
      */
     public int size() {
         return size;
     }
 
     /**
-     * Randomly permute the given collection of cards
+     * Randomly permute the given collection of Setup.cards
      * and reset the size to represent the entire deck.
      */
     public void shuffle() {
@@ -76,7 +76,7 @@ public class Deck {
 
     /**
      * Deals a card from this deck.
-     * @return the card just dealt, or null if all the cards have been
+     * @return the card just dealt, or null if all the Setup.cards have been
      *         previously dealt.
      */
     public Card deal() {
@@ -94,7 +94,7 @@ public class Deck {
      */
     @Override
     public String toString() {
-        String rtn = "size = " + size + "\nUndealt cards: \n";
+        String rtn = "size = " + size + "\nUndealt Setup.cards: \n";
 
         for (int k = size - 1; k >= 0; k--) {
             rtn = rtn + cards.get(k);
@@ -107,7 +107,7 @@ public class Deck {
             }
         }
 
-        rtn = rtn + "\nDealt cards: \n";
+        rtn = rtn + "\nDealt Setup.cards: \n";
         for (int k = cards.size() - 1; k >= size; k--) {
             rtn = rtn + cards.get(k);
             if (k != size) {
