@@ -155,7 +155,22 @@ public class ElevensBoard extends Board {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
         boolean n = false;
 
-        if (((cardAt(selectedCards.get(0)).pointValue()) + (cardAt(selectedCards.get(1)).pointValue())  + (cardAt(selectedCards.get(2)).pointValue())) == 36) {
+        if (((cardAt(selectedCards.get(0)).rank()) == "king") && ((cardAt(selectedCards.get(1)).rank()) == "queen")&& ((cardAt(selectedCards.get(2)).rank()) == "jack")) {
+            n = true;
+        }
+        else if (((cardAt(selectedCards.get(0)).rank()) == "queen") && ((cardAt(selectedCards.get(1)).rank()) == "king")&& ((cardAt(selectedCards.get(2)).rank()) == "jack")) {
+            n = true;
+        }
+        else if (((cardAt(selectedCards.get(0)).rank()) == "queen") && ((cardAt(selectedCards.get(1)).rank()) == "jack")&& ((cardAt(selectedCards.get(2)).rank()) == "king")) {
+            n = true;
+        }
+        else if (((cardAt(selectedCards.get(0)).rank()) == "king") && ((cardAt(selectedCards.get(1)).rank()) == "jack")&& ((cardAt(selectedCards.get(2)).rank()) == "queen")) {
+            n = true;
+        }
+        else if (((cardAt(selectedCards.get(0)).rank()) == "jack") && ((cardAt(selectedCards.get(1)).rank()) == "king")&& ((cardAt(selectedCards.get(2)).rank()) == "queen")) {
+            n = true;
+        }
+        else if (((cardAt(selectedCards.get(0)).rank()) == "queen") && ((cardAt(selectedCards.get(1)).rank()) == "queen")&& ((cardAt(selectedCards.get(2)).rank()) == "king")) {
             n = true;
         }
 
