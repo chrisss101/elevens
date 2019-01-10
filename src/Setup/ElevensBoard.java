@@ -116,6 +116,9 @@ public class ElevensBoard extends Board {
                 }
             }
         }
+        selectedCards.remove(0);
+        selectedCards.remove(1);
+        selectedCards.remove(2);
         for(int j = 0; j < cards.length; j++) {
             for (int k = j; k < cards.length; k++) {
                 selectedCards.add(cards[j]);
@@ -126,6 +129,8 @@ public class ElevensBoard extends Board {
 
             }
         }
+        selectedCards.remove(0);
+        selectedCards.remove(1);
         return false;
 
     }
