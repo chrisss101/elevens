@@ -88,33 +88,35 @@ public class ElevensBoard extends Board {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
         List selectedCards = new ArrayList<>();
         for (int i = 0; i < cards.length; i++) {
-            for(int j = i; j < cards.length; j++) {
-                for (int k = j; k < cards.length; k++) {
-                    selectedCards.add(cards[i]);
-                    selectedCards.add(cards[j]);
-                    selectedCards.add(cards[k]);
+            for(int j = 0; j < cards.length; j++) {
+                for (int k = 0; k < cards.length; k++) {
+                    selectedCards.add(i);
+                    selectedCards.add(j);
+                    selectedCards.add(k);
                     if (isLegal(selectedCards)) {
                         return true;
                     }
+                    selectedCards.remove(0);
+                    selectedCards.remove(1);
+                    selectedCards.remove(2);
 
                 }
             }
         }
-        selectedCards.remove(0);
-        selectedCards.remove(1);
-        selectedCards.remove(2);
+
         for(int j = 0; j < cards.length; j++) {
-            for (int k = j; k < cards.length; k++) {
-                selectedCards.add(cards[j]);
-                selectedCards.add(cards[k]);
+            for (int k = 0; k < cards.length; k++) {
+                selectedCards.add(j);
+                selectedCards.add(k);
                 if (isLegal(selectedCards)) {
                     return true;
                 }
+                selectedCards.remove(0);
+                selectedCards.remove(1);
 
             }
         }
-        selectedCards.remove(0);
-        selectedCards.remove(1);
+
         return false;
 
     }
@@ -155,22 +157,23 @@ public class ElevensBoard extends Board {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
         boolean n = false;
 
-        if (((cardAt(selectedCards.get(0)).rank()) == "king") && ((cardAt(selectedCards.get(1)).rank()) == "queen")&& ((cardAt(selectedCards.get(2)).rank()) == "jack")) {
+        if ((cardAt(selectedCards.get(0)).rank().equals("king")) && (cardAt(selectedCards.get(1)).rank().equals("queen"))&& (cardAt(selectedCards.get(2)).rank().equals("jack")))
+        {
             n = true;
         }
-        else if (((cardAt(selectedCards.get(0)).rank()) == "queen") && ((cardAt(selectedCards.get(1)).rank()) == "king")&& ((cardAt(selectedCards.get(2)).rank()) == "jack")) {
+        else if ((cardAt(selectedCards.get(0)).rank().equals("queen")) && (cardAt(selectedCards.get(1)).rank().equals("king"))&& (cardAt(selectedCards.get(2)).rank().equals("jack"))) {
             n = true;
         }
-        else if (((cardAt(selectedCards.get(0)).rank()) == "queen") && ((cardAt(selectedCards.get(1)).rank()) == "jack")&& ((cardAt(selectedCards.get(2)).rank()) == "king")) {
+        else if ((cardAt(selectedCards.get(0)).rank().equals("queen")) && (cardAt(selectedCards.get(1)).rank().equals("jack"))&& (cardAt(selectedCards.get(2)).rank().equals("king"))) {
             n = true;
         }
-        else if (((cardAt(selectedCards.get(0)).rank()) == "king") && ((cardAt(selectedCards.get(1)).rank()) == "jack")&& ((cardAt(selectedCards.get(2)).rank()) == "queen")) {
+        else if ((cardAt(selectedCards.get(0)).rank().equals("king")) && (cardAt(selectedCards.get(1)).rank().equals("jack"))&& (cardAt(selectedCards.get(2)).rank().equals("queen"))) {
             n = true;
         }
-        else if (((cardAt(selectedCards.get(0)).rank()) == "jack") && ((cardAt(selectedCards.get(1)).rank()) == "king")&& ((cardAt(selectedCards.get(2)).rank()) == "queen")) {
+        else if ((cardAt(selectedCards.get(0)).rank().equals("jack")) && (cardAt(selectedCards.get(1)).rank().equals("king"))&& (cardAt(selectedCards.get(2)).rank().equals("queen"))) {
             n = true;
         }
-        else if (((cardAt(selectedCards.get(0)).rank()) == "queen") && ((cardAt(selectedCards.get(1)).rank()) == "queen")&& ((cardAt(selectedCards.get(2)).rank()) == "king")) {
+        else if ((cardAt(selectedCards.get(0)).rank().equals("queen")) && (cardAt(selectedCards.get(1)).rank().equals("queen"))&& (cardAt(selectedCards.get(2)).rank().equals("king"))) {
             n = true;
         }
 
