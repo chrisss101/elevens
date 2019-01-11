@@ -96,9 +96,8 @@ public class ElevensBoard extends Board {
                     if (isLegal(selectedCards)) {
                         return true;
                     }
-                    selectedCards.remove(0);
-                    selectedCards.remove(1);
-                    selectedCards.remove(2);
+                    selectedCards.clear();
+
 
                 }
             }
@@ -111,8 +110,7 @@ public class ElevensBoard extends Board {
                 if (isLegal(selectedCards)) {
                     return true;
                 }
-                selectedCards.remove(0);
-                selectedCards.remove(1);
+                selectedCards.clear();
 
             }
         }
