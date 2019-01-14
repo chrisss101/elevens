@@ -58,13 +58,18 @@ public class ThirteensBoard extends Board {
      * @return true if the selected Setup.cards form a valid group for removal;
      * false otherwise.
      */
-    @Override
-    public boolean isLegal(List<Integer> selectedCards) {
-        if (selectedCards.size() == 2) {
-            return containsPairSum11(selectedCards);
-        } else if (selectedCards.size() == 3) {
-            return containsJQK(selectedCards);
-        }
+    //@Override
+     public boolean isLegal(List<Integer> selectedCards) {
+        //if (selectedCards.size() == 2) {
+           // return containsPairSum11(selectedCards);
+        //} else if (selectedCards.size() == 1) {
+           // if (cardAt(selectedCards.get(0).rank().equals("King"))) {
+             //   return true;
+           // }
+           // else {
+             //   return false;
+           // }
+        //}
 
         return false;
 
@@ -136,6 +141,7 @@ public class ThirteensBoard extends Board {
         return false;
     }
 
+
     /**
      * Check for a JQK in the selected Setup.cards.
      *
@@ -145,29 +151,5 @@ public class ThirteensBoard extends Board {
      * @return true if the board entries in selectedCards
      * include a jack, a queen, and a king; false otherwise.
      */
-    private boolean containsJQK(List<Integer> selectedCards) {
-        /* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-        boolean n = false;
 
-        if ((cardAt(selectedCards.get(0)).rank().equals("king")) && (cardAt(selectedCards.get(1)).rank().equals("queen")) && (cardAt(selectedCards.get(2)).rank().equals("jack"))) {
-            n = true;
-        } else if ((cardAt(selectedCards.get(0)).rank().equals("queen")) && (cardAt(selectedCards.get(1)).rank().equals("king")) && (cardAt(selectedCards.get(2)).rank().equals("jack"))) {
-            n = true;
-        } else if ((cardAt(selectedCards.get(0)).rank().equals("queen")) && (cardAt(selectedCards.get(1)).rank().equals("jack")) && (cardAt(selectedCards.get(2)).rank().equals("king"))) {
-            n = true;
-        } else if ((cardAt(selectedCards.get(0)).rank().equals("king")) && (cardAt(selectedCards.get(1)).rank().equals("jack")) && (cardAt(selectedCards.get(2)).rank().equals("queen"))) {
-            n = true;
-        } else if ((cardAt(selectedCards.get(0)).rank().equals("jack")) && (cardAt(selectedCards.get(1)).rank().equals("king")) && (cardAt(selectedCards.get(2)).rank().equals("queen"))) {
-            n = true;
-        } else if ((cardAt(selectedCards.get(0)).rank().equals("jack")) && (cardAt(selectedCards.get(1)).rank().equals("queen")) && (cardAt(selectedCards.get(2)).rank().equals("king"))) {
-            n = true;
-        }
-
-
-        if (n) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }

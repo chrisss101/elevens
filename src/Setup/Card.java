@@ -14,7 +14,7 @@ public class Card {
     /**
      * String value that holds the rank of the card
      */
-    private String rank;
+    public String rank;
 
     /**
      * int value that holds the point value.
